@@ -6,9 +6,9 @@ A GitHub action to turn a GitHub project into a self-hosted Helm chart repo, usi
 
 While helm version of this action creates: *[chart.name]-[chart.version]*
 
-This version creates:                      *[chart.name]-[chart.version]***-SHA_[HEAD.short.hash]**
+This version creates:                      *[chart.name]-[chart.version]***-sha-[HEAD.short.hash]**
 
-Example: `postgres-0.1.0-3ab32d2`
+Example: `postgres-0.1.0-sha-3ab32d2`
 
 ## Usage
 
