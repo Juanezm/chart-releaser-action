@@ -52,6 +52,10 @@ main() {
     echo 'Looking up latest tag...'
     local latest_tag
     latest_tag=$(lookup_latest_tag)
+    
+    echo 'Looking up latest hash...'
+    local latest_hash
+    latest_hash=$(git rev-parse --short HEAD)
 
     echo "Discovering changed charts since '$latest_tag'..."
     local changed_charts=()
@@ -68,7 +72,7 @@ main() {
 
         for chart in "${changed_charts[@]}"; do
             if [[ -d "$chart" ]]; then
-                package_chart "$chart"
+                package_chart "${chart}-${latest_hash}"
             else
                 echo "Chart '$chart' no longer exists in repo. Skipping it..."
             fi
