@@ -219,7 +219,7 @@ package_chart() {
 
     echo "Packaging chart '$chart'..."
     helm package "$chart" --destination .cr-release-packages --dependency-update
-    for file in .cr-release-packages/*.tgz; do mv "$file" "${file/.tgz/-SHA_${hash}.tgz}"; done 
+    for file in .cr-release-packages/*.tgz; do mv "$file" "${file/.tgz/-sha-${hash}.tgz}"; done 
 }
 
 release_charts() {
