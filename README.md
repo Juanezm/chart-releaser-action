@@ -2,6 +2,14 @@
 
 A GitHub action to turn a GitHub project into a self-hosted Helm chart repo, using [helm/chart-releaser](https://github.com/helm/chart-releaser) CLI tool.
 
+> **_NOTE:_**  This version adds support for incremental releases based on HEAD hash.
+
+While helm version of this action creates: *[chart.name]-[chart.version]*
+
+This version creates:                      *[chart.name]-[chart.version]***-SHA_[HEAD.short.hash]**
+
+Example: `postgres-0.1.0-3ab32d2`
+
 ## Usage
 
 ### Pre-requisites
