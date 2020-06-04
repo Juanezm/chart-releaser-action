@@ -72,7 +72,7 @@ main() {
 
         for chart in "${changed_charts[@]}"; do
             if [[ -d "$chart" ]]; then
-                package_chart "${chart}-${latest_hash}"
+                package_chart "$chart" "$latest_hash"
             else
                 echo "Chart '$chart' no longer exists in repo. Skipping it..."
             fi
@@ -215,9 +215,11 @@ lookup_changed_charts() {
 
 package_chart() {
     local chart="$1"
+    local hash="$2"
 
     echo "Packaging chart '$chart'..."
     helm package "$chart" --destination .cr-release-packages --dependency-update
+    for file in .cr-release-packages/*.tgz; do mv "$file" "${file/.tgz/-${hash}.tgz}"; done 
 }
 
 release_charts() {
